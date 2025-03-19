@@ -1,0 +1,313 @@
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> c(fifth).
+fifth.erl:21:12: Warning: variable 'L' is unused
+%   21| freq00([], L) ->
+%     |            ^
+
+{ok,fifth}
+2> c(fifth).
+{ok,fifth}
+3> fifth:freq0("apple"). 
+[{97,1},{112,2},{112,2},{108,1},{101,1}]
+4> fifth:freq00("apple").
+[{97,1},{112,2},{112,2},{108,1},{101,1}]
+5> c(fifth).
+{ok,fifth}
+6> fifth:freq0("apple").
+[{97,1},{112,2},{108,1},{101,1}]
+7> [ X*X  || X<-lists:seq(1,10)  ].
+[1,4,9,16,25,36,49,64,81,100]
+8> [ X*X  || X<-lists:seq(1,10)  , X rem 2 == 0].
+[4,16,36,64,100]
+BREAK: (a)bort (A)bort with dump (c)ontinue (p)roc info (i)nfo
+       (l)oaded (v)ersion (k)ill (D)b-tables (d)istribution
+^Cyoussef@joe:~/DDS$ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> [ X*X  || X<-lists:seq(1,10)  , X rem 2 == 0].
+[4,16,36,64,100]
+2> [ {X, Y}  || X<-lists:seq(1,10)  , Y <- [a,b,c]].
+[{1,a},
+ {1,b},
+ {1,c},
+ {2,a},
+ {2,b},
+ {2,c},
+ {3,a},
+ {3,b},
+ {3,c},
+ {4,a},
+ {4,b},
+ {4,c},
+ {5,a},
+ {5,b},
+ {5,c},
+ {6,a},
+ {6,b},
+ {6,c},
+ {7,a},
+ {7,b},
+ {7,c},
+ {8,a},
+ {8,b},
+ {8,c},
+ {9,a},
+ {9,b},
+ {9,c},
+ {10,...},
+ {...}|...]
+3> c(fifth).
+{ok,fifth}
+4> fifth:freq1("apple").
+[{97,1},{112,2},{108,1},{101,1}]
+5> c(fifth).
+{ok,fifth}
+6> fifth:freq1("apple").
+[{97,1},{112,2},{108,1},{101,1}]
+7> c(fifth).
+{ok,fifth}
+8> h(lists, keymember, 3).
+
+  keymember(Key, N, TupleList)
+
+  Returns true if there is a tuple in 
+  TupleList whose Nth element compares equal
+  to Key, otherwise false.
+ok
+9> c(fifth).
+fifth.erl:38:1: Warning: function freq2/1 is unused
+%   38| freq2(L)->
+%     | ^
+
+fifth.erl:41:1: Warning: function freq2/2 is unused
+%   41| freq2([H|T], Result) ->
+%     | ^
+
+{ok,fifth}
+10> c(fifth).
+{ok,fifth}
+11> fifth:freq2("apple").
+[{101,1},{108,1},{112,2},{97,1}]
+12> fifth:freq1("apple").
+[{97,1},{112,2},{108,1},{101,1}]
+13> h(lists, keyfind, 4).
+{error,function_missing}
+14> h(lists, keyfind, 3).
+
+  keyfind(Key, N, TupleList)
+
+  Searches the list of tuples TupleList for a
+  tuple whose Nth element compares equal to 
+  Key. Returns Tuple if such a tuple is found,
+  otherwise false.
+ok
+15> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+fifth.erl:60:1: Warning: function freq3/1 is unused
+%   60| freq3(L)->
+%     | ^
+
+fifth.erl:63:1: Warning: function freq3/2 is unused
+%   63| freq3([H|T], Result) ->
+%     | ^
+
+{ok,fifth}
+16> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+{ok,fifth}
+17> fifth:freq3("apple").
+** exception error: undefined function lists:keyreplace/5
+     in function  fifth:freq3/2 (fifth.erl, line 66)
+18> h(lists, keyreplace, 4).
+
+  keyreplace(Key, N, TupleList1, NewTuple)
+
+  Returns a copy of TupleList1 where the first
+  occurrence of a T tuple whose Nth element
+  compares equal to Key is replaced with 
+  NewTuple, if there is such a tuple T.
+ok
+19> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+{ok,fifth}
+20> h(lists, keyreplace, 4).
+
+  keyreplace(Key, N, TupleList1, NewTuple)
+
+  Returns a copy of TupleList1 where the first
+  occurrence of a T tuple whose Nth element
+  compares equal to Key is replaced with 
+  NewTuple, if there is such a tuple T.
+ok
+21> fifth:freq3("apple").
+** exception error: no function clause matching 
+                    lists:keyreplace(112,1,
+                                     [{112,1},{97,1}],
+                                     2) (lists.erl, line 1243)
+     in function  fifth:freq3/2 (fifth.erl, line 66)
+22> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+{ok,fifth}
+23> fifth:freq3("apple").
+** exception error: no function clause matching 
+                    lists:keyreplace(112,1,
+                                     [{112,1},{97,1}],
+                                     2) (lists.erl, line 1243)
+     in function  fifth:freq3/2 (fifth.erl, line 66)
+24> fifth:freq3("apple").
+** exception error: no function clause matching 
+                    lists:keyreplace(112,1,
+                                     [{112,1},{97,1}],
+                                     2) (lists.erl, line 1243)
+     in function  fifth:freq3/2 (fifth.erl, line 66)
+25> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+{ok,fifth}
+26> fifth:freq3("apple").
+[{101,1},{108,1},{112,2},{97,1}]
+27> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+fifth.erl:72:1: Warning: function freq4/1 is unused
+%   72| freq4(L)->
+%     | ^
+
+fifth.erl:75:1: Warning: function freq4/2 is unused
+%   75| freq4([H|T], Map) ->
+%     | ^
+
+{ok,fifth}
+28> c(fifth).
+fifth.erl:14:1: Warning: function count_tail/2 is unused
+%   14| count_tail(E, [E| Tail])->
+%     | ^
+
+fifth.erl:16:1: Warning: function count_tail/3 is unused
+%   16| count_tail(E, [E| Tail], Acc)->
+%     | ^
+
+{ok,fifth}
+29> fifth:freq4("apple").
+#{97 => 1,101 => 1,108 => 1,112 => 2}
+30> timer:tc(fifth, freq4, [lists:seq(1, 10000)].
+* 1:45: syntax error before: '.'
+30> timer:tc(fifth, freq4, [lists:seq(1, 10000)]).
+{7511,
+ #{3399 => 1,2430 => 1,8304 => 1,7206 => 1,5732 => 1,
+   3058 => 1,8341 => 1,8646 => 1,8670 => 1,5951 => 1,
+   631 => 1,9480 => 1,6543 => 1,6526 => 1,3628 => 1,
+   5833 => 1,3650 => 1,8226 => 1,641 => 1,2704 => 1,
+   6493 => 1,1910 => 1,1907 => 1,9531 => 1,3769 => 1,
+   3328 => 1,2335 => 1,...}}
+31> timer:tc(fifth, freq3, [lists:seq(1, 10000)]).
+{146570,
+ [{10000,1},
+  {9999,1},
+  {9998,1},
+  {9997,1},
+  {9996,1},
+  {9995,1},
+  {9994,1},
+  {9993,1},
+  {9992,1},
+  {9991,1},
+  {9990,1},
+  {9989,1},
+  {9988,1},
+  {9987,1},
+  {9986,1},
+  {9985,1},
+  {9984,1},
+  {9983,1},
+  {9982,1},
+  {9981,1},
+  {9980,1},
+  {9979,1},
+  {9978,1},
+  {9977,1},
+  {9976,1},
+  {9975,...},
+  {...}|...]}
+32> timer:tc(fifth, freq4, [lists:seq(1, 100000)]).
+{80928,
+ #{38649 => 1,3399 => 1,70024 => 1,91962 => 1,90816 => 1,
+   2430 => 1,58338 => 1,90323 => 1,94274 => 1,52914 => 1,
+   26268 => 1,74871 => 1,49592 => 1,85884 => 1,57993 => 1,
+   38555 => 1,28080 => 1,74764 => 1,50061 => 1,60216 => 1,
+   58596 => 1,47656 => 1,47814 => 1,43917 => 1,89092 => 1,
+   25219 => 1,33506 => 1,...}}
+33> timer:tc(fifth, freq3, [lists:seq(1, 100000)]).
+{14737441,
+ [{100000,1},
+  {99999,1},
+  {99998,1},
+  {99997,1},
+  {99996,1},
+  {99995,1},
+  {99994,1},
+  {99993,1},
+  {99992,1},
+  {99991,1},
+  {99990,1},
+  {99989,1},
+  {99988,1},
+  {99987,1},
+  {99986,1},
+  {99985,1},
+  {99984,1},
+  {99983,1},
+  {99982,1},
+  {99981,1},
+  {99980,1},
+  {99979,1},
+  {99978,1},
+  {99977,1},
+  {99976,1},
+  {99975,...},
+  {...}|...]}
+34> 
+

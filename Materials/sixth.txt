@@ -1,0 +1,335 @@
+youssef@joe:~$ cd DDS/
+youssef@joe:~/DDS$ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> fifth:freq2(12).
+** exception error: no function clause matching 
+                    fifth:freq2(12,[]) (fifth.erl, line 51)
+2> catch fifth:freq2(12).
+{'EXIT',
+    {function_clause,
+        [{fifth,freq2,[12,[]],[{file,"fifth.erl"},{line,51}]},
+         {erl_eval,do_apply,7,[{file,"erl_eval.erl"},{line,904}]},
+         {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+         {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+         {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+         {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+3> 1:apple(2).
+** exception error: bad argument
+     in function  apply/3
+        called as apply(1,apple,[2])
+        *** argument 1: not an atom
+4> fifth:freq2(12).
+** exception error: no function clause matching 
+                    fifth:freq2(12,[]) (fifth.erl, line 51)
+5> lists:max([[2,3,4]]).
+[2,3,4]
+6> lists:max([2,3,4]).
+4
+7> self().
+<0.92.0>
+8> fifth:freq2(12).
+** exception error: no function clause matching 
+                    fifth:freq2(12,[]) (fifth.erl, line 51)
+9> self().
+<0.97.0>
+10> catch fifth:freq2(12).
+{'EXIT',
+    {function_clause,
+        [{fifth,freq2,[12,[]],[{file,"fifth.erl"},{line,51}]},
+         {erl_eval,do_apply,7,[{file,"erl_eval.erl"},{line,904}]},
+         {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+         {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+         {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+         {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+11> self().
+<0.97.0>
+12> 1/0.
+** exception error: an error occurred when evaluating an arithmetic expression
+     in operator  '/'/2
+        called as 1 / 0
+13> catch 1/0.
+{'EXIT',
+    {badarith,
+        [{erlang,'/',
+             [1,0],
+             [{error_info,#{module => erl_erts_errors}}]},
+         {erl_eval,do_apply,7,[{file,"erl_eval.erl"},{line,904}]},
+         {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+         {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+         {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+         {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+14> X = 1.
+1
+15> catch X = 1.
+1
+16> catch X = 2.
+{'EXIT',{{badmatch,2},
+         [{erl_eval,expr,6,[{file,"erl_eval.erl"},{line,652}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+          {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+          {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+          {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+17> catch length(1).
+{'EXIT',
+    {badarg,
+        [{erlang,length,
+             [1],
+             [{error_info,#{module => erl_erts_errors}}]},
+         {erl_eval,do_apply,7,[{file,"erl_eval.erl"},{line,904}]},
+         {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+         {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+         {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+         {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+18> catch mymodule:length(1).
+{'EXIT',{undef,[{mymodule,length,[1],[]},
+                {erl_eval,do_apply,7,
+                          [{file,"erl_eval.erl"},{line,904}]},
+                {erl_eval,expr,6,
+                          [{file,"erl_eval.erl"},{line,636}]},
+                {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+                {shell,eval_exprs,7,
+                       [{file,"shell.erl"},{line,849}]},
+                {shell,eval_loop,4,
+                       [{file,"shell.erl"},{line,834}]}]}}
+19> pwd().
+/home/youssef/DDS
+ok
+20> code:get_path().
+[".",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/kernel-10.0/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/stdlib-6.0/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/xmerl-2.0/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/wx-2.4.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/tools-4.0/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/tftp-1.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/syntax_tools-3.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/ssl-11.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/ssh-5.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/snmp-5.16/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/sasl-4.2.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/runtime_tools-2.1/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/reltool-1.0.1/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/public_key-1.16/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/parsetools-2.6/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/os_mon-2.10/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/odbc-2.14.3/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/observer-2.16/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/mnesia-4.23.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/megaco-4.6/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/jinterface-1.14.1/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/inets-9.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/ftp-1.2.2/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/eunit-2.9.1/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/et-1.7.1/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/erts-15.0/ebin",
+ "/home/youssef/.asdf/installs/erlang/27.0/lib/erl_interface-5.5.2/ebin",
+ [...]|...]
+21> Fun = fun() -> ok end.
+#Fun<erl_eval.43.39164016>
+22> Fun(2,3).
+** exception error: interpreted function with arity 0 called with two arguments
+23> catch Fun(2,3).
+{'EXIT',{{badarity,{#Fun<erl_eval.43.39164016>,[2,3]}},
+         [{erl_eval,do_apply,6,
+                    [{file,"erl_eval.erl"},{line,870}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+          {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+          {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+          {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+24> X.
+1
+25> catch X(2,3).
+{'EXIT',{{badfun,1},
+         [{shell,apply_fun,3,[{file,"shell.erl"},{line,1128}]},
+          {erl_eval,do_apply,6,
+                    [{file,"erl_eval.erl"},{line,891}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+          {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+          {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+          {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+26> catch X#{apple =>12}.
+{'EXIT',{{badmap,1},
+         [{maps,put,
+                [k,v,1],
+                [{error_info,#{module => erl_stdlib_errors}}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,461}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+          {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+          {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+          {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+27> Map  = #{apple := 12}.
+* 1:16: only association operators '=>' are allowed in map construction
+28> Map #{apple => 12}.
+* 1:1: variable 'Map' is unbound
+29> Map1 #{apple => 12}.
+* 1:1: variable 'Map1' is unbound
+30> Map1 #{}.
+* 1:1: variable 'Map1' is unbound
+31> Map.
+* 1:1: variable 'Map' is unbound
+32> Map= #{}.
+#{}
+33> catch Map #{apple :=7}.
+{'EXIT',{{badkey,apple},
+         [{maps,update,
+                [apple,7,#{}],
+                [{error_info,#{module => erl_stdlib_errors}}]},
+          {erl_eval,'-expr/6-fun-0-',2,
+                    [{file,"erl_eval.erl"},{line,465}]},
+          {lists,foldl,3,[{file,"lists.erl"},{line,2146}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,462}]},
+          {erl_eval,expr,6,[{file,"erl_eval.erl"},{line,636}]},
+          {shell,exprs,7,[{file,"shell.erl"},{line,893}]},
+          {shell,eval_exprs,7,[{file,"shell.erl"},{line,849}]},
+          {shell,eval_loop,4,[{file,"shell.erl"},{line,834}]}]}}
+34> c(sixth).
+{ok,sixth}
+35> sixth:eval().
+Module name> lists.
+Function name> max.
+Argument list> [2,3].
+** exception error: undefined function lists:max/2
+36> [[2,3]].
+[[2,3]]
+37> sixth:eval().
+Module name> lists.
+Function name> max.
+Argument list> [[2,3]].
+3
+38> 1/0.
+** exception error: an error occurred when evaluating an arithmetic expression
+     in operator  '/'/2
+        called as 1 / 0
+39> throw(apple).
+** exception throw: apple
+40> exit(self(), kill).
+** exception exit: killed
+41> c(sixth).
+{ok,sixth}
+42> sixth:eval().
+Module name> 1.
+Function name> 1.
+Argument list> 1.
+"Error"
+43> c(sixth).
+{ok,sixth}
+44> sixth:eval().
+ok
+45> c(sixth).
+sixth.erl:21:4: syntax error before: 'end'
+%   21|    end.
+%     |    ^
+
+sixth.erl:2:2: function eval/0 undefined
+%    2| -export([eval/0]).
+%     |  ^
+
+error
+46> c(sixth).
+{ok,sixth}
+47> sixth:eval().
+Module name> 1.
+Function name> 1.
+Argument list> 1.
+"error"
+48> c(sixth).
+{ok,sixth}
+49> sixth:eval().
+Module name> 1.
+Function name> apple.
+Argument list> [].
+"The type of the given input is not correct"
+50> 1:apple().
+** exception error: bad argument
+     in function  apply/3
+        called as apply(1,apple,[])
+        *** argument 1: not an atom
+51> lists:max([2]).
+2
+52> lists:max([]).
+** exception error: no function clause matching 
+                    lists:max([]) (lists.erl, line 543)
+53> lists:max([[]]).
+[]
+54> fifth:freq2([12]).
+[{12,1}]
+55> c(sixth).
+{ok,sixth}
+56> sixth:eval().
+Module name> 1.
+Function name> apple.
+Argument list> [].
+"The type of the given input is not correct"
+57> sixth:eval().
+Module name> apple.
+Function name> apple.
+Argument list> [].
+"The function does not exist"
+58> sixth:module_info(exports).
+[{eval,0},{module_info,0},{module_info,1}]
+59> c(sixth).
+sixth.erl:32:1: Warning: function eval2/0 is unused
+%   32| eval2() ->
+%     | ^
+
+{ok,sixth}
+60> sixth:eval().
+Try's afterAfterok
+61> c(sixth).
+sixth.erl:33:1: Warning: function eval2/0 is unused
+%   33| eval2() ->
+%     | ^
+
+{ok,sixth}
+62> sixth:eval().
+"error"
+63> c(sixth).
+sixth.erl:33:1: Warning: function eval2/0 is unused
+%   33| eval2() ->
+%     | ^
+
+{ok,sixth}
+64> sixth:eval().
+Module name> lists.
+Function name> max.
+Argument list> [[2,34,5]].
+#{value => 34,func => {lists,max,[[2,34,5]]}}
+65> c(sixth).
+sixth.erl:33:1: Warning: function eval2/0 is unused
+%   33| eval2() ->
+%     | ^
+
+{ok,sixth}
+66> sixth:eval().
+Module name> lists.
+Function name> max.
+Argument list> [[2,34,5]].
+34
+67> c(sixth).
+sixth.erl:34:1: Warning: function eval2/0 is unused
+%   34| eval2() ->
+%     | ^
+
+{ok,sixth}
+68> sixth:eval().
+Module name> lists.
+Function name> max.
+Argument list> [[2,34,5]].
+#{value => 34,func => {lists,max,[[2,34,5]]}}
+69> c(sixth).
+sixth.erl:34:1: Warning: function eval2/0 is unused
+%   34| eval2() ->
+%     | ^
+
+{ok,sixth}
+70> sixth:equals([],[]) == [].
+true
+71> sixth:equals([1,1,1,2,2,2,3,3,3],[1,2,1,1,2,1]) == [1,3,5].
+true
+72> sixth:equals([1,1,1,2,2,2,3,3,3],[1,2,1,1,2,1]) == [1,5].
+false
+73> 
+
+

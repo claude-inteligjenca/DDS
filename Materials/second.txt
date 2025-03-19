@@ -1,0 +1,124 @@
+youssef@joe:~$ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> pwd().
+/home/youssef
+ok
+10> pwd().
+/home/youssef
+ok
+11> pwd().
+/home/youssef
+ok
+12> pwd().
+/home/youssef
+ok
+13> cd("DDS/").
+/home/youssef/DDS
+ok
+14> ls().
+first.beam      first.erl       first.txt       second.beam     
+second.erl      
+ok
+15> c(first.erl).
+* 1:8: syntax error before: '.'
+15> c(first).
+{ok,first}
+16> first:foo().
+ok
+
+-------------------------------------------------------------------------
+
+youssef@joe:~/DDS$ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> c(second).
+{ok,second}
+2> ls().
+first.beam      first.erl       first.txt       second.beam     
+second.erl      
+ok
+3> first:foo().
+ok
+4> first:foo().
+ok
+5> first:foo().
+ok
+6> first:foo(2).
+3
+7> first:foo("AWE").
+** exception error: an error occurred when evaluating an arithmetic expression
+     in operator  +/2
+        called as "AWE" + 1
+     in call from first:foo/1 (first.erl, line 8)
+8> c(first).
+first.erl:10:1: Warning: function foo/2 is unused
+%   10| foo(A, B)->
+%     | ^
+
+{ok,first}
+9> c(first).
+{ok,first}
+10> c(first).
+{ok,first}
+11> first:foo("AB", "CD").
+"ABCD"
+12> c(first).
+first.erl:13:1: function foo/2 already defined
+%   13| foo(A, B)->
+%     | ^
+
+error
+13> c(first).
+{ok,first}
+-------------------------------------------------------------
+
+youssef@joe:~/DDS$ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit:ns]
+
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> c(second).
+second.erl:3:2: Warning: export_all flag enabled - all functions will be exported
+%    3| -compile([export_all]).
+%     |  ^
+
+{ok,second}
+2> c(second).
+{ok,second}
+3> second:foo().
+ok
+4> foo(3).
+** exception error: undefined shell command foo/1
+5> second:foo(3).
+4
+6> second:foo(ok, 3).
+ok
+7> second:foo(ok, "qwe").
+ok
+8> second:foo(ok, [1,23,4]).
+ok
+9> c(second).
+{ok,second}
+10> second:foo([], [1,23,4]).
+one
+11> c(second).
+{ok,second}
+12> second:foo(2, 2).
+4
+13> second:foo(2, 21).
+** exception error: no function clause matching second:foo(2,21) (second.erl, line 14)
+14> second:foo(2, 2).
+4
+15> c(second).
+{ok,second}
+16> second:foo(2, 21).
+-19
+17> c(second).
+{ok,second}
+18> second:foo(2, 21).
+-19
+19> second:foo(2, 2).
+4
+20> 
